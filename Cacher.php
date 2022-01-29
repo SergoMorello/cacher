@@ -1,6 +1,6 @@
 <?php
 
-class cache {
+class Cacher {
 	private static $dirCache;
 
 	public static function setDir($dir) {
@@ -15,28 +15,33 @@ class cache {
 	private static function index() {
 		return (new class(self::$dirCache){
 			private $dirCache;
+
 			function __construct($dirCache) {
 				$this->dirCache = $dirCache;
 				$this->check();
 			}
+
 			private function check() {
-				if (!file_exists($this->$dirCache.'.index'))
+				if (!file_exists($this->dirCache.'.index'))
 					$this->update();
 				
 				foreach($this->get() as $line)
 					if ($line->time > 0 && time() > $line->time)
 						if ($obj = $this->delete($line->key))
-							@unlink($this->$dirCache.$obj->name);
+							@unlink($this->dirCache.$obj->name);
 			}
+
 			private function findKey($obj, $key) {
 				foreach($obj as $keyIt => $line)
 					if ($line->key == $key)
 						return $keyIt;
 				return -1;
 			}
+
 			private function update($obj = "") {
-				file_put_contents($this->$dirCache.'.index',(empty($obj) ? '[]' : json_encode($obj)));
+				file_put_contents($this->dirCache.'.index',(empty($obj) ? '[]' : json_encode($obj)));
 			}
+
 			private function remArrKey($arr,$key) {
 				$res = [];
 				foreach($arr as $keyIt => $value) {
@@ -46,14 +51,16 @@ class cache {
 				}
 				return $res;
 			}
+
 			public function get($key = "") {
-				$res = json_decode(file_get_contents($this->$dirCache.'.index'));
+				$res = json_decode(file_get_contents($this->dirCache.'.index'));
 				if (empty($key))
 					return $res;
 				foreach($res as $line)
 					if ($line->key == $key)
 						return $line;
 			}
+
 			private function dataType($value) {
 				$ret = (object)[
 							'type' => 'string',
@@ -73,6 +80,7 @@ class cache {
 				}
 				return $ret;
 			}
+
 			public function set($key, $value, $time) {
 				$obj = $this->get();
 				$time = $time>0 ? time()+$time : 0;
@@ -95,6 +103,7 @@ class cache {
 						'value' => $valType->value
 						];
 			}
+
 			public function delete($key) {
 				$obj = $this->get();
 				if (($keyIt = $this->findKey($obj, $key)) >= 0) {

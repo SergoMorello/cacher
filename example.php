@@ -1,23 +1,23 @@
 <?php
 
-require_once(__DIR__ . '/cacheClass.php');
+require_once(__DIR__ . '/Cacher.php');
 
-cache::setDir(__DIR__.'/.cache/');
+Cacher::setDir(__DIR__.'/.cache/');
 
-cache::put('string', 'Cтрока', 20);
+Cacher::put('string', 'Cтрока', 20);
 
-cache::put('array', [
+Cacher::put('array', [
 	'array' => 'Массив'
 ]);
 
-if (cache::has('string')) {
+if (Cacher::has('string')) {
 	echo "<pre>";
-	echo cache::get('string');
+	echo Cacher::get('string');
 	echo "</pre>";
 }
 
-if (cache::has('array')) {
+if (Cacher::has('array')) {
 	echo "<pre>";
-	print_r(cache::get('array'));
+	print_r(Cacher::get('array'));
 	echo "</pre>";
 }
