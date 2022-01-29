@@ -4,40 +4,40 @@
 
 ##	Простой класс для кэширования данных
 
-[Cache](#cache)   
+[Cacher](#cacher)   
 
 ###
 
-<h3 id="cache">Cache:</h3>
+<h3 id="cacher">Cacher:</h3>
 
 #### В кэше можно хранить любые данные и файлы от одной секунды до бесконечности
 
-##### Сохранить данные в кэше put(`ключ`,`данные`,`время хранения в секундах`)
+##### Сохранить данные в кэше put(`ключ`, `данные`, `время хранения в секундах`)
 
 ```php
-cache::put('message','Hello World!',60);
+Cacher::put('message', 'Hello World!', 60);
 ```
 
 ##### Получить данные
 
 ```php
-cache::get('message');
+Cacher::get('message');
 ```
 
 ###### или получить и сразу удалить
 
 ```php
-cache::pull('message');
+Cacher::pull('message');
 ```
 
 ##### Удалить
 
 ```php
-cache::forget('message');
+Cacher::forget('message');
 ```
 
 ##### Проверить сущеутвование по ключу
 
 ```php
-cache::has('message');
+Cacher::has('message');
 ```
