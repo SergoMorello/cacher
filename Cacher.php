@@ -1,7 +1,7 @@
 <?php
 
 class Cacher {
-	private static $dirCache;
+	private static $dirCache = __DIR__.'/.cache/';
 
 	public static function setDir($dir) {
 		self::$dirCache = $dir;

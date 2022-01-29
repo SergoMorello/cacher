@@ -2,8 +2,6 @@
 
 require_once(__DIR__ . '/Cacher.php');
 
-Cacher::setDir(__DIR__.'/.cache/');
-
 Cacher::put('string', 'Cтрока', 20);
 
 Cacher::put('array', [
