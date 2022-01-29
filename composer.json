@@ -1,0 +1,21 @@
+{
+    "name": "sme/cacher",
+    "description": "A simple class for caching",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SME\\Modules\\": "src/Cacher/"
+        },
+		"files": ["src/Cacher/Helper.php"]
+    },
+    "authors": [
+        {
+            "name": "Sergey",
+            "email": "sergomorello@yandex.ru"
+        }
+    ],
+    "require": {
+		"php": ">=7.1.0"
+	}
+}

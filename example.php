@@ -1,6 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/Cacher.php');
+require_once(__DIR__ . '/vendor/autoload.php');
+
+use SME\Modules\Cacher;
 
 Cacher::put('string', 'Cтрока', 20);
 

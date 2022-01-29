@@ -1,7 +1,9 @@
 <?php
 
+namespace SME\Modules;
+
 class Cacher {
-	private static $dirCache = __DIR__.'/.cache/';
+	private static $dirCache = __DIR__.'/../../.cache/';
 
 	public static function setDir($dir) {
 		self::$dirCache = $dir;

@@ -47,3 +47,11 @@ Cacher::forget('message');
 ```php
 Cacher::has('message');
 ```
+
+##### Так же можно выполнять все действия с классом с помощью хелпера
+
+```php
+cacher()->put('message2', 'world hello', 180);
+
+cacher()->get('message2');
+```
